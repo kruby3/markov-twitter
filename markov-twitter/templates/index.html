@@ -1,0 +1,38 @@
+<html>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+ <body>
+ <div class ="text-center">
+	 <div class="container">
+     {% if error %}
+      <div class="alert alert-danger alert-dismissible fade in" role="alert">
+        <strong>Oh snap!</strong> {{error}}
+      </div>
+      {% endif %}
+		<div class ="page-header">
+			 <h1>MarkovTwitter</h1>
+			 <p class="lead">Use markov chains to generate tweets for any twitter user</p>
+		 </div>
+		  <form action="{{ url_for('tweets') }}" method="post" class="tweets">
+			Twitter Handle: <input name="twitter_handle" type="text" /><br />
+			Number of tweets:
+			<select name="num_tweets">
+			  {% for n in range(1,11) %}
+				<option value="{{n}}">{{n}}</option>
+			  {% endfor %}
+			</select>
+			<br /><br />
+			<input class="button" type="submit" value="Create Tweets">
+		  </form>
+		  </div>
+	  </div>
+  </div>
+ </body>
+</html>
